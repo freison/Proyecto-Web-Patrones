@@ -13,29 +13,29 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Rutina_Ejercicio")
-public class RutinaEjercicio implements Serializable {
+@Table(name="Rutina_Calentamiento")
+public class RutinaCalentamiento implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRutinaEjercicio;
+    private Long idRutinaCalentamiento;
     
     @JoinColumn(name="id_rutina", referencedColumnName="id_rutina")
     @ManyToOne
     private Rutina rutina;
     
-    @JoinColumn(name="id_ejercicio", referencedColumnName="id_ejercicio")
+    @JoinColumn(name="id_calentamiento", referencedColumnName="id_calentamiento")
     @ManyToOne
-    private Ejercicio ejercicio;
+    private Calentamiento calentamiento;
     
-    public RutinaEjercicio() {
+    public RutinaCalentamiento() {
         
     }
 
-    public RutinaEjercicio(Rutina rutina, Ejercicio ejercicio) {
+    public RutinaCalentamiento(Rutina rutina, Calentamiento calentamiento) {
         this.rutina = rutina;
-        this.ejercicio = ejercicio;
+        this.calentamiento = calentamiento;
     }
 }

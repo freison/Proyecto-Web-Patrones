@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 import java.time.LocalDate;
+import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 @Data
@@ -20,6 +21,7 @@ public class Usuario implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_usuario")
     private Long idUsuario;
     
     private String nombre;

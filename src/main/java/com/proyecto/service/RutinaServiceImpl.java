@@ -16,9 +16,7 @@ public class RutinaServiceImpl implements RutinaService {
     private RutinaDao rutinaDao;
     
     @Autowired
-    private UsuarioDao usuarioDao;
-    
-    
+    private UsuarioDao usuarioDao; 
     
     @Override
     public List<Rutina> getRutinas() {

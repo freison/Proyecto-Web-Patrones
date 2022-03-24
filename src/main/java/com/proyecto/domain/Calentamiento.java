@@ -2,6 +2,7 @@
 package com.proyecto.domain;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,27 +14,23 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Ejercicio")
-public class Ejercicio implements Serializable {
+@Table(name="Calentamiento")
+public class Calentamiento implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idEjercicio;
+    @Column(name="id_calentamiento")
+    private long idCalentamiento;
     
     private String descripcion;
     
-    @JoinColumn(name="id_tipo_ejercicio", referencedColumnName="id_tipo_ejercicio")
-    @ManyToOne
-    private TipoEjercicio tipoEjercicio;
-    
-    public Ejercicio() {
+    public Calentamiento() {
         
     }
 
-    public Ejercicio(String descripcion, TipoEjercicio tipoEjercicio) {
+    public Calentamiento(String descripcion) {
         this.descripcion = descripcion;
-        this.tipoEjercicio = tipoEjercicio;
     }
 }
