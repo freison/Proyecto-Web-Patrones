@@ -5,7 +5,9 @@ import com.proyecto.dao.TipoEjercicioDao;
 import com.proyecto.domain.TipoEjercicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TipoEjercicioServiceImpl implements TipoEjercicioService {
 
     @Autowired
@@ -28,7 +30,7 @@ public class TipoEjercicioServiceImpl implements TipoEjercicioService {
 
     @Override
     public TipoEjercicio getTipoEjercicio(TipoEjercicio tipoEjercicio) {
-        return tipoEjercicioDao.findById(tipoEjercicio.getIdTiposEjercicio()).orElse(null);
+        return tipoEjercicioDao.findById(tipoEjercicio.getIdTipoEjercicio()).orElse(null);
     }
     
 }

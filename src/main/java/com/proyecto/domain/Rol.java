@@ -11,22 +11,22 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Tipo_Ejercicio")
-public class TipoEjercicio implements Serializable {
-    private static final long SerialVersinoUID = 1L;
+@Table(name="Rol")
+public class Rol implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTipoEjercicio;
+    private Long idRol;
     
     private String descripcion;
     
-    public TipoEjercicio(){
+    public Rol(){
         
     }
-    
-    public TipoEjercicio(String descripcion){
+
+    public Rol(String descripcion) {
         this.descripcion = descripcion;
     }
 }
-
