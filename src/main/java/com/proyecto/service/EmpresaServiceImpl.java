@@ -1,32 +1,30 @@
 
 package com.proyecto.service;
 
-import com.proyecto.domain.Calentamiento;
+import com.proyecto.domain.Empresa;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.proyecto.dao.CalentamientoDao;
 
 @Service
-public class CalentamientoServiceImpl implements CalentamientoService {
+public class EmpresaServiceImpl implements EmpresaService {
 
     @Override
-    public List<Calentamiento> getCalentamientos() {
+    public List<Empresa> getEmpresas() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void save(Calentamiento calentamiento) {
+    public void save(Empresa empresa) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void delete(Calentamiento calentamiento) {
+    public void delete(Empresa empresa) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Calentamiento getCalentamiento(Calentamiento calentamiento) {
+    public Empresa getEmpresa(Empresa empresa) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
