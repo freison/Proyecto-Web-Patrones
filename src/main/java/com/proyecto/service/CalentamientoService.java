@@ -5,11 +5,11 @@ import com.proyecto.domain.Calentamiento;
 import java.util.List;
 
 public interface CalentamientoService {
-    public List<Calentamiento> getEjercicios();
+    public List<Calentamiento> getCalentamientos();
     
-    public void save(Calentamiento ejercicio);
+    public void save(Calentamiento calentamiento);
     
-    public void delete(Calentamiento ejercicio);
+    public void delete(Calentamiento calentamiento);
     
-    public Calentamiento getEjercicio(Calentamiento ejercicio);
+    public Calentamiento getCalentamiento(Calentamiento calentamiento);
 }

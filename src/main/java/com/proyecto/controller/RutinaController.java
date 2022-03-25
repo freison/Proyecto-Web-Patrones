@@ -19,6 +19,7 @@ public class RutinaController {
     @GetMapping("/rutina/listado")
     public String inicio(Model model){
         var rutinas = rutinaService.getRutinas();
+        model.addAttribute("rutinas", rutinas);
         
         return "/rutina/listado";
     }
