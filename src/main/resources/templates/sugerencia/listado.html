@@ -4,11 +4,37 @@
         <title>Sugerencias</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="contenido">
+            <header th:replace="layout/plantilla :: header" />
             <h1>Sugerencias de Lugares</h1>
             <a th:href="@{/sugerencia/nuevo}">Nueva Sugerencia</a>
+
+            <div th:if="${sugerencias != null and !sugerencias.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Usuario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="sugerencia : ${sugerencias}">
+                            <td th:text="${sugerencia.direccion}"></td>
+                            <td th:text="${sugerencia.usuario.nombre}"></td>
+                            <td><a th:href="@{/sugerencia/eliminar/} + ${sugerencia.idSugerencia}">Eliminar</a></td>
+                            <td><a th:href="@{/sugerencia/modificar/} + ${sugerencia.idSugerencia}">Modificar</a></td>
+                        </tr>
+                    </tbody>
+                </table>   
+            </div>
+
+            <div th:if="${sugerencias == null or sugerencias.empty}">
+                <h2>No existen clientes actualmente</h2>
+            </div>
         </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

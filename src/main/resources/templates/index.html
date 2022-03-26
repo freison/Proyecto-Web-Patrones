@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <header th:replace="layout/plantilla :: header" />
         <div>Proyecto Web y Patrones</div>
-        
+
+        <a th:href="@{/sugerencia/listado}">Sugerencias</a>
+
         <h1>PRUEBA PRUEBA PRUEBA PRUEBA PRUEBA PRUEBA PRUEBA PRUEBA PRUEBA PRUEBA PRUEBA PRUEBA </h1>
-        
+
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
