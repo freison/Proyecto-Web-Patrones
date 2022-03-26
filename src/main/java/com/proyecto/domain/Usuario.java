@@ -30,7 +30,7 @@ public class Usuario implements Serializable {
     private String nombreUsuario;
     private String clave;
     private String correo;
-    private LocalDate fechaNacimiento; /**------LocalDate?-----**/
+    private String fechaNacimiento; /**------LocalDate?-----**/
     
     @JoinColumn(name="id_empresa", referencedColumnName="id_empresa")
     @ManyToOne
@@ -44,7 +44,7 @@ public class Usuario implements Serializable {
         
     }
 
-    public Usuario(String nombre, String primerApellido, String segundoApellido, String nombreUsuario, String clave, String correo, LocalDate fechaNacimiento, Empresa empresa, Rol rol) {
+    public Usuario(String nombre, String primerApellido, String segundoApellido, String nombreUsuario, String clave, String correo, String fechaNacimiento, Empresa empresa, Rol rol) {
         this.nombre = nombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;

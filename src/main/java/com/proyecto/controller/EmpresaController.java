@@ -40,6 +40,9 @@ public class EmpresaController {
     public String modificarEmpresa(Empresa empresa, Model model){
         
         empresa = empresaService.getEmpresa(empresa);
+        
+        System.out.println(empresa);
+        
         model.addAttribute("empresa", empresa);
         
         return "/empresa/modificar";

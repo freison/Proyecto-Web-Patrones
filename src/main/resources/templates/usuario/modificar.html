@@ -18,6 +18,10 @@
                   method="post"
                   th:object="${usuario}">
                 <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+                <input type="hidden" name="cedula" th:field="*{empresa.cedula}"/>
+                <input type="hidden" name="telefono" th:field="*{empresa.telefono}"/>
+                <input type="hidden" name="direccion" th:field="*{empresa.direccion}"/>
+                
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" th:field="*{nombre}"/>
                 <br/>
@@ -44,9 +48,19 @@
                 <input type="email" name="correo" th:field="*{correo}"/>
 
                 <br/>
+                
+                <label for="empresa">Empresa:</label>
+                <input type="text" name="empresa" th:field="*{empresa.nombre}"/>
+
+                <br/>
+                
+                <label for="rol">Rol:</label>
+                <input type="text" name="rol" th:field="*{rol.descripcion}"/>
+
+                <br/>
 
                 <label for="fechaNacimiento">Fecha Nacimiento:</label>
-                <input type="date" name="fechaNacimiento" th:field="*{fechaNacimiento}"/>
+                <input type="text" name="fechaNacimiento" th:field="*{fechaNacimiento}"/>
 
                 <br/>
                 <input type="submit" name="guardar" value="Guardar"/>           

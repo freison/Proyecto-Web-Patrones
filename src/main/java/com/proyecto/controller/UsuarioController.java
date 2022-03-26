@@ -1,6 +1,8 @@
 
 package com.proyecto.controller;
 
+import com.proyecto.dao.EmpresaDao;
+import com.proyecto.dao.RolDao;
 import com.proyecto.domain.Usuario;
 import com.proyecto.service.UsuarioService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,7 @@ public class UsuarioController {
     @GetMapping("/usuario/listado")
     public String inicio(Model model){
         var usuarios = usuarioService.getUsuarios();
+        System.out.println(usuarios);
         model.addAttribute("usuarios", usuarios);
         
         return "/usuario/listado";
@@ -29,7 +32,7 @@ public class UsuarioController {
         return "/usuario/modificar";
     }
     
-    @PostMapping("usuario/guardar")
+    @PostMapping("/usuario/guardar")
     public String guardarUsuario(Usuario usuario){
         usuarioService.save(usuario);
         return "redirect:/usuario/listado";

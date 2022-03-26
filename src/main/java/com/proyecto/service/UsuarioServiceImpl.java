@@ -28,13 +28,18 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void save(Usuario usuario) {
+        System.out.println("Start");
         Empresa empresa = usuario.getEmpresa();
         empresa = empresaDao.save(empresa);
         usuario.setEmpresa(empresa);
         
+        System.out.println(usuario.getEmpresa());
+        
         Rol rol = usuario.getRol();
-        usuario.setRol(rol);
         rol = rolDao.save(rol);
+        usuario.setRol(rol);
+        
+        System.out.println(usuario.getRol());    
         
         usuarioDao.save(usuario);
     }

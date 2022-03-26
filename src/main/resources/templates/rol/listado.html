@@ -25,13 +25,13 @@
                         <tr th:each="rol : ${rols}">
                             <td th:text="${rol.descripcion}"></td>
                             <td><a th:href="@{/rol/eliminar/} + ${rol.idRol}">Eliminar</a> </td>
-                            <td><a th:href="@{//rol/modificar/} + ${rol.idRol}">Modificar</a> </td>
+                            <td><a th:href="@{/rol/modificar/} + ${rol.idRol}">Modificar</a> </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <div th:if="${rols ==null or rols.empty}">
+            <div th:if="${rols == null or rols.empty}">
                 No tenemos lista de rols que mostrar...
             </div>
         </div>

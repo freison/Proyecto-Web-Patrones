@@ -19,7 +19,7 @@ public class RolController {
     @GetMapping("/rol/listado")
     public String inicio(Model model){
         var roles = rolService.getRoles();
-        model.addAttribute("roles", roles);
+        model.addAttribute("rols", roles);
         
         return "/rol/listado";
     }
