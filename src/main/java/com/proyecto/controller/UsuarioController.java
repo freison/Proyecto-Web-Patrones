@@ -39,7 +39,7 @@ public class UsuarioController {
     public String modificarUsuario(Usuario usuario, Model model){
         usuario = usuarioService.getUsuario(usuario);
         model.addAttribute("usuario", usuario);
-        return "/usuario/modifcar";
+        return "/usuario/modificar";
     }
     
     @GetMapping("/usuario/eliminar/{idUsuario}")

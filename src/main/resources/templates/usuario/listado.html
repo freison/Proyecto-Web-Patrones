@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        <div class="contenido">
+            <h2>Listado de Usuarios</h2>
+
+            <a th:href="@{/usuario/nuevo}">Nuevo Usuario</a>
+            <div th:if="${usuarios !=null and !usuarios.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Primer Apellido</th>
+                            <th>Segundo Apellido</th>
+                            <th>Usuario</th>
+                            <th>Clave</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="usuario : ${usuarios}">
+                            <td th:text="${usuario.nombre}"></td>
+                            <td th:text="${usuario.primer_apellido}"></td>
+                            <td th:text="${usuario.segundo_apellido}"></td>
+                            <td th:text="${usuario.nombre_usuario}"></td>
+                            <td th:text="${usuario.clave}"></td>
+                            <td th:text="${usuario.correo}"></td>
+                            <td th:date="${usuario.fecha_nacimiento}"></td> <!-- Consultar date???? -->
+                            <td><a th:href="@{/usuario/eliminar/} + ${usuario.idUsuario}">Eliminar</a> </td>
+                            <td><a th:href="@{//usuario/modificar/} + ${usuario.idUsuario}">Modificar</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:if="${usuarios ==null or usuarios.empty}">
+                No tenemos lista de usuarios que mostrar...
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+
+
+
+    </body>
+</html>

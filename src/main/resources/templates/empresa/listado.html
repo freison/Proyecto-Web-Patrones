@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        <div class="contenido">
+            <h2>Listado de Empresas</h2>
+
+            <a th:href="@{/empresa/nuevo}">Nuevo Empresa</a>
+            <div th:if="${empresas !=null and !empresas.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cedula</th>
+                            <th>Telefono</th>
+                            <th>Direccion</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="empresa : ${empresas}">
+                            <td th:text="${empresa.nombre}"></td>
+                            <td th:text="${empresa.cedula}"></td>
+                            <td th:text="${empresa.telefono}"></td>
+                            <td th:text="${empresa.direccion}"></td>
+                            <td><a th:href="@{/empresa/eliminar/} + ${empresa.idEmpresa}">Eliminar</a> </td>
+                            <td><a th:href="@{//empresa/modificar/} + ${empresa.idEmpresa}">Modificar</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:if="${empresas ==null or empresas.empty}">
+                No tenemos lista de empresas que mostrar...
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+
+
+
+    </body>
+</html>

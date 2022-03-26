@@ -1,31 +1,38 @@
-
 package com.proyecto.service;
 
+import com.proyecto.dao.EmpresaDao;
 import com.proyecto.domain.Empresa;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmpresaServiceImpl implements EmpresaService {
+    
+    @Autowired
+    private EmpresaDao empresaDao;
 
     @Override
     public List<Empresa> getEmpresas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return (List<Empresa>) empresaDao.findAll();
+        
     }
 
     @Override
     public void save(Empresa empresa) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        empresaDao.save(empresa);
+        
     }
 
     @Override
     public void delete(Empresa empresa) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        empresaDao.delete(empresa);
+        
     }
 
     @Override
     public Empresa getEmpresa(Empresa empresa) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return empresaDao.findById(empresa.getIdEmpresa()).orElse(null);
     }
     
 }

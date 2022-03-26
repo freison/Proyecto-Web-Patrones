@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @Slf4j
 public class EmpresaController {
+    
     @Autowired
     private EmpresaService empresaService;
     
@@ -37,9 +38,11 @@ public class EmpresaController {
     
     @GetMapping("/empresa/modificar/{idEmpresa}")
     public String modificarEmpresa(Empresa empresa, Model model){
+        
         empresa = empresaService.getEmpresa(empresa);
         model.addAttribute("empresa", empresa);
-        return "/empresa/modifcar";
+        
+        return "/empresa/modificar";
     }
     
     @GetMapping("/empresa/eliminar/{idEmpresa}")

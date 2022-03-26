@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        <div class="contenido">
+            <h2>Datos de Usuario</h2>
+
+            <a th:href="@{/usuario/listado}">Regresar</a>
+
+            <form th:action="@{/usuario/guardar}"
+                  method="post"
+                  th:object="${usuario}">
+                <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" th:field="*{nombre}"/>
+                <br/>
+
+                <label for="primerApellido">Primer Apellido:</label>
+                <input type="text" name="primerApellido" th:field="*{primerApellido}"/>
+                <br/>
+
+                <label for="segundoApellido">Segundo Apellido:</label>
+                <input type="text" name="segundoApellido" th:field="*{segundoApellido}"/>
+                <br/>
+
+                <label for="nombreUsuario">Usuario:</label>
+                <input type="text" name="nombreUsuario" th:field="*{nombreUsuario}"/>
+
+                <br/>
+
+                <label for="clave">Clave:</label>
+                <input type="password" name="clave" th:field="*{clave}"/>
+
+                <br/>
+
+                <label for="correo">Correo:</label>
+                <input type="email" name="correo" th:field="*{correo}"/>
+
+                <br/>
+
+                <label for="fechaNacimiento">Fecha Nacimiento:</label>
+                <input type="date" name="fechaNacimiento" th:field="*{fechaNacimiento}"/>
+
+                <br/>
+                <input type="submit" name="guardar" value="Guardar"/>           
+            </form>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+
+    </body>
+</html>

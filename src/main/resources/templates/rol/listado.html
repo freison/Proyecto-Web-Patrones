@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        <div class="contenido">
+            <h2>Listado de Rols</h2>
+
+            <a th:href="@{/rol/nuevo}">Nuevo Rol</a>
+            <div th:if="${rols !=null and !rols.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="rol : ${rols}">
+                            <td th:text="${rol.descripcion}"></td>
+                            <td><a th:href="@{/rol/eliminar/} + ${rol.idRol}">Eliminar</a> </td>
+                            <td><a th:href="@{//rol/modificar/} + ${rol.idRol}">Modificar</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:if="${rols ==null or rols.empty}">
+                No tenemos lista de rols que mostrar...
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+
+
+
+    </body>
+</html>

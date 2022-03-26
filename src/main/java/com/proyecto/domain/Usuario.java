@@ -30,7 +30,7 @@ public class Usuario implements Serializable {
     private String nombreUsuario;
     private String clave;
     private String correo;
-    private LocalDate fechaNacimiento;
+    private LocalDate fechaNacimiento; /**------LocalDate?-----**/
     
     @JoinColumn(name="id_empresa", referencedColumnName="id_empresa")
     @ManyToOne

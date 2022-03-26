@@ -39,7 +39,7 @@ public class RolController {
     public String modificarRol(Rol rol, Model model){
         rol = rolService.getRol(rol);
         model.addAttribute("rol", rol);
-        return "/rol/modifcar";
+        return "/rol/modificar";
     }
     
     @GetMapping("/rol/eliminar/{idRol}")
