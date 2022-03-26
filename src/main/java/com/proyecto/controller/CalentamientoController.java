@@ -20,7 +20,6 @@ public class CalentamientoController {
     public String inicio(Model model){
         var calentamientos = calentamientoService.getCalentamientos();
         model.addAttribute("calentamientos", calentamientos);
-        
         return "/calentamiento/listado";
     }
     

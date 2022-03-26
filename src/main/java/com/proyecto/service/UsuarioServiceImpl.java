@@ -21,6 +21,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     
     @Autowired RolDao rolDao;
     
+    
     @Override
     public List<Usuario> getUsuarios() {
         return (List<Usuario>) usuarioDao.findAll();

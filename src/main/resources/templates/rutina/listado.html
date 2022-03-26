@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Rutinas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="contenido">
+            <header th:replace="layout/plantilla :: header" />
+            <h1>Rutinas recomendadas</h1>
+            <a th:href="@{/rutina/nuevo}">Nueva Rutina</a>
+            <a th:href="@{/calentamiento/listado}">Calentamientos</a>
+
+            <div th:if="${rutinas != null and !rutinas.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="rutina : ${rutinas}">
+                            <td th:text="${rutina.descripcion}"></td>
+                            <td><a th:href="@{/rutina/eliminar/} + ${rutina.idRutina}">Eliminar</a></td>
+                            <td><a th:href="@{/rutina/modificar/} + ${rutina.idRutina}">Modificar</a></td>
+                        </tr>
+                    </tbody>
+                </table>   
+            </div>
+
+            <div th:if="${rutinas == null or rutinas.empty}">
+                <h2>No se han agregado rutinas</h2>
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

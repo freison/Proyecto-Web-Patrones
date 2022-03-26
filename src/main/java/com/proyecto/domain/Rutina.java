@@ -16,6 +16,7 @@ import lombok.Data;
 @Entity
 @Table(name="Rutina")
 public class Rutina implements Serializable {
+    
     private static final long SerialVersinoUID = 1L;
     
     @Id
