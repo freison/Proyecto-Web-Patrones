@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package com.proyecto.service;
 
-/**
- *
- * @author freisoncastro
- */
+import com.proyecto.domain.Articulo;
+import java.util.ArrayList;
+import java.util.List;
+
+
 public interface CarritoService {
+    public List<Articulo> listaArticulos = new ArrayList<Articulo>();
     
+    public List<Articulo> getArticulos();
+    
+    public void save(Articulo articulo);
+    
+    public void delete(Articulo articulo);
+    
+    public Articulo getArticulo(Articulo articulo);
 }
