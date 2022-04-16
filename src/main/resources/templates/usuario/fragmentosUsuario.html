@@ -55,8 +55,8 @@
                                             ***************************/                                                                                                                           
 
                                             <td>[[${contador.count}]]</td>
-                                            <td>[[${usuario.nombre} + ' ' + ${usuario.apellidos}]]</td>
-                                            <td class="text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(usuario.credito.limite)}]]</td>
+                                            <td></td>
+                                            <td class="text-end"></td>
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuario/eliminar/}+${usuario.idUsuario}"
                                                    class="btn btn-danger">
