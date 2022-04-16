@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Calentamiento</title>
+        <title>Categoria</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
@@ -10,15 +10,18 @@
     <body>
         <header th:replace="layout/plantilla :: header" />
         <div class="contenido">
-        <h1>Datos de Calentamientos</h1>
+        <h1>Datos de Categorias</h1>
         <a th:href="@{/}">Regresar</a>
         
-        <form th:action="@{/calentamiento/guardar}"
+        <form th:action="@{/categoria/guardar}"
               method="post"
-              th:object="${calentamiento}">
-            <input type="hidden" name="idCalentamiento" th:field="*{idCalentamiento}"/>
-            <label for="descripcion">Descripcion</label>
-            <input type="text" name="descripcion" th:field="*{descripcion}"/>
+              th:object="${categoria}">
+            <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
+            <label for="categoria">Categoria</label>
+            <input type="text" name="categoria" th:field="*{descripcion}"/>
+            <br/>
+            <label for="activo">Activo</label>
+            <input type="number" name="activo" th:field="*{activo}"/>
             <br/>
             
             <input type="submit" name="guardar" value="Guardar"/>

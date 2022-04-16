@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Metas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="contenido">
+            <header th:replace="layout/plantilla :: header" />
+            <h1>Metas</h1>
+            <a th:href="@{/meta/nuevo}">Nueva Meta</a>
+
+            <div th:if="${metas != null and !metas.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="meta : ${metas}">
+                            <td th:text="${meta.descripcion}"></td>
+                            <td><a th:href="@{/meta/eliminar/} + ${meta.idMeta}">Eliminar</a></td>
+                            <td><a th:href="@{/meta/modificar/} + ${meta.idMeta}">Modificar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:if="${metas == null or metas.empty}">
+                <h2>No se han agregado metas</h2>
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

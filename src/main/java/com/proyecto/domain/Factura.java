@@ -2,6 +2,7 @@
 package com.proyecto.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,32 +15,37 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Rutina")
-public class Rutina implements Serializable {
+@Table(name="Factura")
+public class Factura implements Serializable {
     
-    private static final long SerialVersinoUID = 1L;
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_rutina")
-    private Long idRutina;
-    
-    private String descripcion;
+    @Column(name="id_factura")
+    private long idFactura;
     
     @JoinColumn(name="id_usuario", referencedColumnName="id_usuario")
     @ManyToOne
     private Usuario usuario;
     
-    @JoinColumn(name="id_calentamiento",referencedColumnName="id_calentamiento")
-    @ManyToOne
-    private Calentamiento calentamiento;
+    private Date fecha;
+    private Double total;
+    private int estado;
     
-    public Rutina(){
+    public Factura() {
         
     }
 
-    public Rutina(String descripcion, Usuario usuario) {
-        this.descripcion = descripcion;
+    public Factura(long idFactura, Usuario usuario, Date fecha, Double total, int estado) {
+        this.idFactura = idFactura;
         this.usuario = usuario;
+        this.fecha = fecha;
+        this.total = total;
+        this.estado = estado;
     }
+
+    
+
+    
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Articulos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="contenido">
+            <header th:replace="layout/plantilla :: header" />
+            <h1>Articulos</h1>
+            <a th:href="@{/articulo/nuevo}">Nuevo Articulo</a>
+
+            <div th:if="${articulos != null and !articulos.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+                            <th>Activo</th>
+                            <th>Existencia</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="articulo : ${articulos}">
+                            <td th:text="${articulo.descripcion}"></td>
+                            <td th:text="${articulo.precio}"></td>
+                            <td th:text="${articulo.activo}"></td>
+                            <td th:text="${articulo.existencia}"></td>
+                            <td><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">Eliminar</a></td>
+                            <td><a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}">Modificar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:if="${articulos == null or articulos.empty}">
+                <h2>No se han agregado articulos</h2>
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

@@ -1,7 +1,7 @@
-
 package com.proyecto.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,32 +14,36 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Rutina")
-public class Rutina implements Serializable {
-    
-    private static final long SerialVersinoUID = 1L;
-    
+@Table(name = "Reporte_Trafico")
+public class Trafico implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_rutina")
-    private Long idRutina;
-    
+    @Column(name = "id_reporte_trafico")
+    private long idTrafico;
+
     private String descripcion;
-    
-    @JoinColumn(name="id_usuario", referencedColumnName="id_usuario")
+    private String hora;
+
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne
     private Usuario usuario;
-    
-    @JoinColumn(name="id_calentamiento",referencedColumnName="id_calentamiento")
-    @ManyToOne
-    private Calentamiento calentamiento;
-    
-    public Rutina(){
-        
+
+    public Trafico() {
+
     }
 
-    public Rutina(String descripcion, Usuario usuario) {
+    public Trafico(long idTrafico, String descripcion, String hora, Usuario usuario) {
+        this.idTrafico = idTrafico;
         this.descripcion = descripcion;
+        this.hora = hora;
         this.usuario = usuario;
     }
+
+    
+
+    
+
 }

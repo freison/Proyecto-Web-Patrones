@@ -38,7 +38,7 @@ public class CalentamientoController {
     public String modificarCalentamiento(Calentamiento calentamiento, Model model){
         calentamiento = calentamientoService.getCalentamiento(calentamiento);
         model.addAttribute("calentamiento", calentamiento);
-        return "/calentamiento/modifcar";
+        return "/calentamiento/modificar";
     }
     
     @GetMapping("/calentamiento/eliminar/{idCalentamiento}")

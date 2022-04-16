@@ -14,32 +14,32 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Rutina")
-public class Rutina implements Serializable {
+@Table(name="Anuncio")
+public class Anuncio implements Serializable {
     
-    private static final long SerialVersinoUID = 1L;
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_rutina")
-    private Long idRutina;
+    @Column(name="id_anuncio")
+    private long idAnuncio;
     
     private String descripcion;
+    private String enlace;
     
     @JoinColumn(name="id_usuario", referencedColumnName="id_usuario")
     @ManyToOne
     private Usuario usuario;
     
-    @JoinColumn(name="id_calentamiento",referencedColumnName="id_calentamiento")
-    @ManyToOne
-    private Calentamiento calentamiento;
-    
-    public Rutina(){
+    public Anuncio() {
         
     }
 
-    public Rutina(String descripcion, Usuario usuario) {
+    public Anuncio(long idAnuncio, String descripcion, String enlace) {
+        this.idAnuncio = idAnuncio;
         this.descripcion = descripcion;
-        this.usuario = usuario;
+        this.enlace = enlace;
     }
+
+    
 }

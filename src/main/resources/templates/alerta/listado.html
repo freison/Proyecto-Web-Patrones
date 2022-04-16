@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Alertas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="contenido">
+            <header th:replace="layout/plantilla :: header" />
+            <h1>Alertas</h1>
+            <a th:href="@{/alerta/nuevo}">Nueva Alerta</a>
+
+            <div th:if="${alertas != null and !alertas.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Mensaje</th>
+                            <th>Nivel</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="alerta : ${alertas}">
+                            <td th:text="${alerta.mensaje}"></td>
+                            <td th:text="${alerta.nivel}"></td>
+                            <td><a th:href="@{/alerta/eliminar/} + ${alerta.idAlerta}">Eliminar</a></td>
+                            <td><a th:href="@{/alerta/modificar/} + ${alerta.idAlerta}">Modificar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:if="${alertas == null or alertas.empty}">
+                <h2>No se han agregado alertas</h2>
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>
