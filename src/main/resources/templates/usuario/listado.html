@@ -1,56 +1,20 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://thymeleaf.org">
-    <head>
-        <title>TechShop</title>
-        <meta charset="UTF-8"/>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+
+
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header" />
-        <div class="contenido">
-            <h2>Listado de Usuarios</h2>
-
-            <a th:href="@{/usuario/nuevo}">Nuevo Usuario</a>
-            <div th:if="${usuarios !=null and !usuarios.empty}">
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Primer Apellido</th>
-                            <th>Segundo Apellido</th>
-                            <th>Usuario</th>
-                            <th>Clave</th>
-                            <th>Correo</th>
-                            <th>Empresa</th>
-                            <th>Rol</th>
-                            <th>Fecha Nacimiento</th>
-                            <th>Eliminar</th>
-                            <th>Modificar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="usuario : ${usuarios}">
-                            <td th:text="${usuario.nombre}"></td>
-                            <td th:text="${usuario.primerApellido}"></td>
-                            <td th:text="${usuario.segundoApellido}"></td>
-                            <td th:text="${usuario.nombreUsuario}"></td>
-                            <td th:text="${usuario.clave}"></td>
-                            <td th:text="${usuario.correo}"></td>
-                            <td th:text="${usuario.empresa.nombre}"></td>
-                            <td th:text="${usuario.rol.descripcion}"></td>
-                            <td th:text="${usuario.fechaNacimiento}"></td>
-                            <td><a th:href="@{/usuario/eliminar/} + ${usuario.idUsuario}">Eliminar</a> </td>
-                            <td><a th:href="@{/usuario/modificar/} + ${usuario.idUsuario}">Modificar</a> </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div th:if="${usuarios ==null or usuarios.empty}">
-                No tenemos lista de usuarios que mostrar...
-            </div>
-        </div>
+        
+        <section th:replace="usuario/fragmentosUsuario :: botonesAgregar"/>
+        <section th:replace="usuario/fragmentosUsuario :: agregarUsuario"/>
+        <section th:replace="usuario/fragmentosUsuario :: listadoUsuarios"/>
+                
         <footer th:replace="layout/plantilla :: footer"/>
 
 

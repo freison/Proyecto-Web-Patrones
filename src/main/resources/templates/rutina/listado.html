@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Rutinas</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
     <body>
         <div class="contenido">
             <header th:replace="layout/plantilla :: header" />
             <h1>Rutinas recomendadas</h1>
-            <a th:href="@{/rutina/nuevo}">Nueva Rutina</a>
+            <a th:href="@{/rutina/nuevo}" sec:authorize="hasRole('ROLE_ADMIN')">Nueva Rutina</a>
             <a th:href="@{/calentamiento/listado}">Calentamientos</a>
 
             <div th:if="${rutinas != null and !rutinas.empty}">
@@ -25,8 +25,8 @@
                     <tbody>
                         <tr th:each="rutina : ${rutinas}">
                             <td th:text="${rutina.descripcion}"></td>
-                            <td><a th:href="@{/rutina/eliminar/} + ${rutina.idRutina}">Eliminar</a></td>
-                            <td><a th:href="@{/rutina/modificar/} + ${rutina.idRutina}">Modificar</a></td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/rutina/eliminar/} + ${rutina.idRutina}">Eliminar</a></td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/rutina/modificar/} + ${rutina.idRutina}">Modificar</a></td>
                         </tr>
                     </tbody>
                 </table>   

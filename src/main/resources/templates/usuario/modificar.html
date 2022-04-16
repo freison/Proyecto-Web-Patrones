@@ -2,10 +2,8 @@
 
 <html xmlns:th="http://thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TechShop</title>
-        <meta charset="UTF-8"/>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header" />
@@ -21,7 +19,7 @@
                 <input type="hidden" name="cedula" th:field="*{empresa.cedula}"/>
                 <input type="hidden" name="telefono" th:field="*{empresa.telefono}"/>
                 <input type="hidden" name="direccion" th:field="*{empresa.direccion}"/>
-                
+
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" th:field="*{nombre}"/>
                 <br/>
@@ -48,12 +46,12 @@
                 <input type="email" name="correo" th:field="*{correo}"/>
 
                 <br/>
-                
+
                 <label for="empresa">Empresa:</label>
                 <input type="text" name="empresa" th:field="*{empresa.nombre}"/>
 
                 <br/>
-                
+
                 <label for="rol">Rol:</label>
                 <input type="text" name="rol" th:field="*{rol.descripcion}"/>
 
