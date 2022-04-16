@@ -31,6 +31,9 @@ public class UsuarioController {
     @GetMapping("/usuario/listado")
     public String inicio(Model model){
         var usuarios = usuarioService.getUsuarios();
+        
+        
+        model.addAttribute("totalUsuarios", usuarios.size());
         System.out.println(usuarios);
         model.addAttribute("usuarios", usuarios);
         
