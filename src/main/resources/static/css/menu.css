@@ -56,7 +56,7 @@ body{
 }
 
 .nav-menu-link:hover {
-    border-radius: 20px 20px 0 0;
+    border-radius: 20px;
     background-color: #627DC8;
     transition: 0.3s;
 }

@@ -31,13 +31,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void save(Usuario usuario) {
         System.out.println("Start");
         Empresa empresa = usuario.getEmpresa();
-        empresa = empresaDao.save(empresa);
+        empresa = (Long)empresa.getIdEmpresa() != null ? empresa : empresaDao.save(empresa);
         usuario.setEmpresa(empresa);
         
         System.out.println(usuario.getEmpresa());
         
         Rol rol = usuario.getRol();
-        rol = rolDao.save(rol);
+        rol = (Long)rol.getIdRol() != null ? rol: rolDao.save(rol);
         usuario.setRol(rol);
         
         System.out.println(usuario.getRol());    

@@ -23,12 +23,12 @@ public class CalentamientoController {
         return "/calentamiento/listado";
     }
     
-    @GetMapping("calentamiento/nuevo")
+    @GetMapping("/calentamiento/nuevo")
     public String nuevaCalentamiento(Calentamiento calentamiento){
         return "/calentamiento/modificar";
     }
     
-    @PostMapping("calentamiento/guardar")
+    @PostMapping("/calentamiento/guardar")
     public String guardarCalentamiento(Calentamiento calentamiento){
         calentamientoService.save(calentamiento);
         return "redirect:/calentamiento/listado";
@@ -38,7 +38,7 @@ public class CalentamientoController {
     public String modificarCalentamiento(Calentamiento calentamiento, Model model){
         calentamiento = calentamientoService.getCalentamiento(calentamiento);
         model.addAttribute("calentamiento", calentamiento);
-        return "/calentamiento/modifcar";
+        return "/calentamiento/modificar";
     }
     
     @GetMapping("/calentamiento/eliminar/{idCalentamiento}")
