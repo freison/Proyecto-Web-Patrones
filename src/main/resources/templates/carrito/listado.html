@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <link href="/css/car.css" rel="stylesheet" type="text/css"/>
+        <title>Inicio</title>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header(items=${articulos.size()})"/>
+
+        <div class="container">
+            <h2 th:text="#{index.titulo}">Nuestros Articulos</h2>            
+            <div class="" th:if="${articulos != null and !articulos.empty}">
+                <div class="item" >
+                    <table class="table table-stryped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th >ID</th>
+                                <th >Descripcion</th>
+                                <th >Cantidad</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="item : ${articulos.entrySet()}">
+                                <section th:if="${item.getValue() > 0}">
+                                    <td th:text="${item.getKey().idArticulo}"></td>
+                                    <td th:text="${item.getKey().descripcion}"></td>
+                                    <td th:text="${item.getValue()}"></td>
+                                    <td></td>
+                                    <td>
+                                        <a th:href="@{/carrito/eliminar/}+${item.getKey().getIdArticulo}"
+                                           class="btn btn-danger">
+                                            <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                        </a>
+                                    </td>
+                                </section>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <section class="card">
+                        <span th:text="${carritoTotal}"></span>
+                    </section>
+                </div>                
+            </div>
+            <div th:if="${articulos == null or articulos.empty}"  th:text="#{articulo.no_mostrar}">
+                No tenemos lista de articulos que mostrar...
+            </div>
+        </div>
+
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>
