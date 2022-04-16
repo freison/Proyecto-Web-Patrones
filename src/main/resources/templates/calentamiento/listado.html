@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Calentamientos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
     <body>
         <div class="contenido">
             <header th:replace="layout/plantilla :: header" />
             <h1>Calentamientos recomendados</h1>
-            <a th:href="@{/calentamiento/nuevo}">Nuevo Calentamiento</a>
+            <a th:href="@{/calentamiento/nuevo}" sec:authorize="hasRole('ROLE_ADMIN')">Nuevo Calentamiento</a>
 
             <div th:if="${calentamientos != null and !calentamientos.empty}">
                 <table border="1">
                     <thead>
                         <tr>
                             <th>Descripcion</th>
-                            <th>Eliminar</th>
-                            <th>Modificar</th>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')">Modificar</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="calentamiento : ${calentamientos}">
                             <td th:text="${calentamiento.descripcion}"></td>
-                            <td><a th:href="@{/calentamiento/eliminar/} + ${calentamiento.idCalentamiento}">Eliminar</a></td>
-                            <td><a th:href="@{/calentamiento/modificar/} + ${calentamiento.idCalentamiento}">Modificar</a></td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/calentamiento/eliminar/} + ${calentamiento.idCalentamiento}">Eliminar</a></td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/calentamiento/modificar/} + ${calentamiento.idCalentamiento}">Modificar</a></td>
                         </tr>
                     </tbody>
                 </table>   

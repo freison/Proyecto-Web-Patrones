@@ -2,10 +2,8 @@
 
 <html xmlns:th="http://thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TechShop</title>
-        <meta charset="UTF-8"/>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header" />
@@ -21,7 +19,7 @@
                 <input type="hidden" name="cedula" th:field="*{empresa.cedula}"/>
                 <input type="hidden" name="telefono" th:field="*{empresa.telefono}"/>
                 <input type="hidden" name="direccion" th:field="*{empresa.direccion}"/>
-                
+
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" th:field="*{nombre}"/>
                 <br/>
@@ -39,25 +37,43 @@
 
                 <br/>
 
-                <label for="clave">Clave:</label>
-                <input type="password" name="clave" th:field="*{clave}"/>
+                <label for="clave"></label>
+                <input type="hidden" name="clave" th:field="*{clave}"/>
 
                 <br/>
 
-                <label for="correo">Correo:</label>
+                <label  for="correo">Correo:</label>
                 <input type="email" name="correo" th:field="*{correo}"/>
 
                 <br/>
-                
+
                 <label for="empresa">Empresa:</label>
                 <input type="text" name="empresa" th:field="*{empresa.nombre}"/>
 
                 <br/>
-                
+
                 <label for="rol">Rol:</label>
                 <input type="text" name="rol" th:field="*{rol.descripcion}"/>
 
                 <br/>
+               
+                <div>
+                    <label >Empresa: </label>
+                    <select th:field="*{empresa.idEmpresa}">
+                        <option th:each="empresa : ${empresas}" th:value="${empresa.idEmpresa}" th:text="${empresa.nombre}"
+                                th:selected="${usuario.empresa.idEmpresa} == ${empresa.idEmpresa} ? true : false"
+                                ></option>
+                    </select>
+                </div>
+                               
+                <div>
+                    <label >Rol: </label>
+                    <select th:field="*{rol.idRol}">
+                        <option th:each="rol : ${roles}" th:value="${rol.idRol}" th:text="${rol.descripcion}"
+                                th:selected="${usuario.rol.idRol} == ${rol.idRol} ? true : false"
+                                ></option>
+                    </select>
+                </div>
 
                 <label for="fechaNacimiento">Fecha Nacimiento:</label>
                 <input type="text" name="fechaNacimiento" th:field="*{fechaNacimiento}"/>

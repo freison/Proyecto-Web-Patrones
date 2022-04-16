@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://thymeleaf.org">
-    <head>
-        <title>TechShop</title>
-        <meta charset="UTF-8"/>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header" />
         <div class="contenido">
             <h2>Listado de Empresas</h2>
 
-            <a th:href="@{/empresa/nuevo}">Nuevo Empresa</a>
+            <a th:href="@{/empresa/nuevo}" sec:authorize="hasRole('ROLE_ADMIN')">Nuevo Empresa</a>
             <div th:if="${empresas !=null and !empresas.empty}">
                 <table border="1">
                     <thead>
@@ -20,8 +21,8 @@
                             <th>Cedula</th>
                             <th>Telefono</th>
                             <th>Direccion</th>
-                            <th>Eliminar</th>
-                            <th>Modificar</th>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')">Modificar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,8 +31,8 @@
                             <td th:text="${empresa.cedula}"></td>
                             <td th:text="${empresa.telefono}"></td>
                             <td th:text="${empresa.direccion}"></td>
-                            <td><a th:href="@{/empresa/eliminar/} + ${empresa.idEmpresa}">Eliminar</a> </td>
-                            <td><a th:href="@{/empresa/modificar/} + ${empresa.idEmpresa}">Modificar</a> </td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empresa/eliminar/} + ${empresa.idEmpresa}">Eliminar</a> </td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empresa/modificar/} + ${empresa.idEmpresa}">Modificar</a> </td>
                         </tr>
                     </tbody>
                 </table>

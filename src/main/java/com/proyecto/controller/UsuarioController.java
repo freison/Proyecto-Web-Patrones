@@ -4,7 +4,11 @@ package com.proyecto.controller;
 import com.proyecto.dao.EmpresaDao;
 import com.proyecto.dao.RolDao;
 import com.proyecto.domain.Usuario;
+import com.proyecto.service.EmpresaService;
+import com.proyecto.service.RolService;
 import com.proyecto.service.UsuarioService;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +22,18 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
     
+    @Autowired
+    private EmpresaService empresaService;
+    
+    @Autowired
+    private RolService rolService;
+    
     @GetMapping("/usuario/listado")
     public String inicio(Model model){
         var usuarios = usuarioService.getUsuarios();
+        
+        
+        model.addAttribute("totalUsuarios", usuarios.size());
         System.out.println(usuarios);
         model.addAttribute("usuarios", usuarios);
         
@@ -28,7 +41,12 @@ public class UsuarioController {
     }
     
     @GetMapping("usuario/nuevo")
-    public String nuevaUsuario(Usuario usuario){
+    public String nuevaUsuario(Usuario usuario, Model model){
+        var empresas = empresaService.getEmpresas();
+        var roles = rolService.getRoles();
+        model.addAttribute("empresas", empresas);
+        model.addAttribute("roles", roles);
+        
         return "/usuario/modificar";
     }
     
@@ -41,7 +59,12 @@ public class UsuarioController {
     @GetMapping("/usuario/modificar/{idUsuario}")
     public String modificarUsuario(Usuario usuario, Model model){
         usuario = usuarioService.getUsuario(usuario);
+        var empresas = empresaService.getEmpresas();
+        var roles = rolService.getRoles();
         model.addAttribute("usuario", usuario);
+        model.addAttribute("empresas", empresas);
+        model.addAttribute("roles", roles);
+        
         return "/usuario/modificar";
     }
     

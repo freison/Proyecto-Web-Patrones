@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Sugerencias</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
     <body>
         <div class="contenido">
             <header th:replace="layout/plantilla :: header" />
             <h1>Sugerencias de Lugares</h1>
-            <a th:href="@{/sugerencia/nuevo}">Nueva Sugerencia</a>
+            <a th:href="@{/sugerencia/nuevo}" sec:authorize="hasRole('ROLE_ADMIN')">Nueva Sugerencia</a>
 
             <div th:if="${sugerencias != null and !sugerencias.empty}">
                 <table border="1">
@@ -24,8 +24,8 @@
                         <tr th:each="sugerencia : ${sugerencias}">
                             <td th:text="${sugerencia.direccion}"></td>
                             <td th:text="${sugerencia.usuario.nombre}"></td>
-                            <td><a th:href="@{/sugerencia/eliminar/} + ${sugerencia.idSugerencia}">Eliminar</a></td>
-                            <td><a th:href="@{/sugerencia/modificar/} + ${sugerencia.idSugerencia}">Modificar</a></td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/sugerencia/eliminar/} + ${sugerencia.idSugerencia}">Eliminar</a></td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/sugerencia/modificar/} + ${sugerencia.idSugerencia}">Modificar</a></td>
                         </tr>
                     </tbody>
                 </table>   
