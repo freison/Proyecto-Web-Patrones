@@ -8,7 +8,6 @@
         <meta charset="UTF-8"/>
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
@@ -55,14 +54,6 @@
                                         <i class="fas fa-user-times"></i> [[#{plantilla.logout}]]
                                     </a>
                                 </form>
-                            </li>
-                            
-                            <li class="nav-item-cart">
-                                <a th:href="@{/carrito/listado/}" class="nav-link">
-                                    <i class="shopping fas fa-shopping-cart has-badge notification">
-                                        <span th:text="${items}" class="badge"></span>
-                                    </i>
-                                </a>
                             </li>
                         </ul>
                     </div>                    
