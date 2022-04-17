@@ -22,7 +22,7 @@ public class CarritoController {
     @Autowired
     ArticuloService articuloService;
     
-    // Testing
+    // Testing T2
     @GetMapping("/carrito/agregar/{idArticulo}")
     public String agregarACarrito(Articulo articulo){
         articulo = articuloService.getArticulo(articulo);
