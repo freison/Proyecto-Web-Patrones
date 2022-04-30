@@ -29,13 +29,18 @@ public class DetalleFactura implements Serializable {
     @ManyToOne
     private Articulo Articulo;
     
+    @JoinColumn(name="id_factura", referencedColumnName="id_factura")
+    @ManyToOne
+    private Factura Factura;
+    
     public DetalleFactura() {
         
     }
 
-    public DetalleFactura(long idDetalleFactura, Articulo Articulo) {
+    public DetalleFactura(long idDetalleFactura, Articulo Articulo, Factura Factura) {
         this.idDetalleFactura = idDetalleFactura;
         this.Articulo = Articulo;
+        this.Factura = Factura;
     }
     
     

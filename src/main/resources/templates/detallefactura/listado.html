@@ -24,8 +24,8 @@
                     </thead>
                     <tbody>
                         <tr th:each="detallefactura : ${detallefacturas}">
-                            <td th:text="${detallefactura.idArticulo}"></td>
-                            <td th:text="${detallefactura.idFactura}"></td>
+                            <td th:text="${detallefactura.articulo.idArticulo}"></td>
+                            <td th:text="${detallefactura.factura.idFactura}"></td>
                             <td><a th:href="@{/detallefactura/eliminar/} + ${detallefactura.idDetalleFactura}">Eliminar</a></td>
                             <td><a th:href="@{/detallefactura/modificar/} + ${detallefactura.idDetalleFactura}">Modificar</a></td>
                         </tr>
