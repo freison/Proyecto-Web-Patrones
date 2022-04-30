@@ -16,7 +16,7 @@
                             type="button" 
                             class="btn btn-primary btn-block" 
                             data-bs-toggle="modal" 
-                            data-bs-target="#agregarUsuario">
+                            data-bs-target="#agregarTrafico">
                             <i class="fas fa-plus"></i> [[#{accion.agregar}]]
                         </button>
                     </div>
@@ -24,47 +24,38 @@
             </div>
         </section>
 
-        <section th:fragment="listadoUsuarios" id="usuarios">
+        <section th:fragment="listadoTraficos" id="traficos">
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-header">
-                                <h4>[[#{usuario.usuarios}]]</h4>
+                                <h4>[[#{trafico.traficos}]]</h4>
                             </div>
-                            <div th:if="${usuarios != null and !usuarios.empty}">
+                            <div th:if="${traficos != null and !traficos.empty}">
                                 <table class="table table-stryped">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th th:text="#{usuario.nombre}">Nombre</th>
-                                            <th th:text="#{usuario.limite}">Límite</th>
-                                            <th></th>
-                                            <th></th>
+                                            <th th:text="#{trafico.descripcion}">Descripcion</th>
+                                            <th th:text="#{trafico.hora}">Hora del Reporte</th>
+                                            <th>Eliminar</th>
+                                            <th>Modificar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="usuario, contador : ${usuarios}">
-
-                                            /***************************
-
-
-                                            POSIBLEMENTE NO ES LA TABLA CORRECTA
-
-
-                                            ***************************/                                                                                                                           
-
-                                            <td>[[${contador.count}]]</td>
-                                            <td></td>
-                                            <td class="text-end"></td>
+                                        <tr th:each="trafico : ${traficos}">
+                                            <td th:text="${trafico.descripcion}"></td>
+                                            <td th:text="${trafico.hora}"></td>
+                                            <td><a th:href="@{/trafico/modificar/} + ${trafico.idTrafico}">Modificar</a></td>
                                             <td>
-                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuario/eliminar/}+${usuario.idUsuario}"
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/trafico/eliminar/} + ${trafico.idTrafico}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
                                                 </a>
                                             </td>
                                             <td>
-                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuario/modificar/}+${usuario.idUsuario}"
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/trafico/modificar/} + ${trafico.idTrafico}"
                                                    class="btn btn-success">
                                                     <i class="fas fa-angle-double-right"></i> [[#{accion.actualizar}]]
                                                 </a>
@@ -73,21 +64,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-center p-2" th:if="${usuarios == null or usuarios.empty}">
-                                <span th:text="#{usuario.no_mostrar}">Lista vacía</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="col-md-3">
-                        
-                        <div class="card text-center bg-success text-white mb-3">
-                            <div class="card-body">
-                                <h3 th:text="#{usuario.totalUsuarios}">Total Usuarios</h3>
-                                <h4 class="display-6">
-                                    <i class="fas fa-users"></i> [[${totalUsuarios}]]
-                                </h4>
+                            <div class="text-center p-2" th:if="${traficos == null or traficos.empty}">
+                                <span th:text="#{trafico.no_mostrar}">Lista vacía</span>
                             </div>
                         </div>
                     </div>
@@ -95,8 +73,8 @@
             </div>
         </section>
         
-        <section th:fragment="agregarUsuario">
-            <div id="agregarUsuario" 
+        <section th:fragment="agregarTrafico">
+            <div id="agregarTrafico" 
                  class="modal fade" 
                  tabindex="-1" 
                  aria-labelledby="exampleModalLabel" 
@@ -104,29 +82,20 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header bg-info text-white">
-                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Usuario</h5>
+                            <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
-                        <form th:action="@{/usuario/guardar}" th:object="${usuario}"
+                        <form th:action="@{/trafico/guardar}" th:object="${trafico}"
                               method="POST" class="was-validated">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="nombre" th:text="#{usuario.nombre}">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" required="true">
+                                    <label for="descripcion" th:text="#{trafico.descripcion}">Descripcion</label>
+                                    <input type="text" class="form-control" name="descripcion" th:field="*{descripcion}"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="apellidos" th:text="#{usuario.apellidos}">Apellidos</label>
-                                    <input type="text" class="form-control" name="apellidos" required="true">
+                                    <label for="hora" th:text="#{trafico.hora}">Hora del Reporte</label>
+                                    <input type="datetime-local" class="form-control" name="hora" th:field="*{hora}"/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="email" th:text="#{usuario.correo}">Correo</label>
-                                    <input type="email" class="form-control" name="correo" required="true">
-                                </div>
-                                <div class="form-group">
-                                    <label for="telefono" th:text="#{usuario.telefono}">Teléfono</label>
-                                    <input type="tel" class="form-control" name="telefono">
-
-                            </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
                             </div>

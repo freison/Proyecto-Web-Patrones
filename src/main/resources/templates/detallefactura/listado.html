@@ -12,7 +12,7 @@
             <h1>Detalle de Facturas</h1>
             <a th:href="@{/detallefactura/nuevo}">Nuevo detalle</a>
 
-            <div th:if="${facturas != null and !facturas.empty}">
+            <div th:if="${detallefacturas != null and !detallefacturas.empty}">
                 <table border="1">
                     <thead>
                         <tr>
@@ -33,7 +33,7 @@
                 </table>
             </div>
 
-            <div th:if="${facturas == null or facturas.empty}">
+            <div th:if="${detallefacturas == null or detallefacturas.empty}">
                 <h2>No se han agregado detalles de facturas</h2>
             </div>
         </div>

@@ -16,8 +16,10 @@
                 <table border="1">
                     <thead>
                         <tr>
-                            <th>Descripcion</th>
-                            <th>Usuario</th>
+                            <th>Direccion</th>
+                            <th>Creada por</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,7 +34,7 @@
             </div>
 
             <div th:if="${sugerencias == null or sugerencias.empty}">
-                <h2>No existen clientes actualmente</h2>
+                <h2>No existen sugerencias actualmente</h2>
             </div>
         </div>
         <footer th:replace="layout/plantilla :: footer"/>

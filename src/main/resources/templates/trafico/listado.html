@@ -1,42 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Traficos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+
+
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
     <body>
-        <div class="contenido">
-            <header th:replace="layout/plantilla :: header" />
-            <h1>Traficos</h1>
-            <a th:href="@{/trafico/nuevo}">Nuevo Reporte de Trafico</a>
+        <header th:replace="layout/plantilla :: header" />
 
-            <div th:if="${traficos != null and !traficos.empty}">
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>Descripcion</th>
-                            <th>Hora del Reporte</th>
-                            <th>Eliminar</th>
-                            <th>Modificar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="trafico : ${traficos}">
-                            <td th:text="${trafico.descripcion}"></td>
-                            <td th:text="${trafico.hora}"></td>
-                            <td><a th:href="@{/trafico/eliminar/} + ${trafico.idTrafico}">Eliminar</a></td>
-                            <td><a th:href="@{/trafico/modificar/} + ${trafico.idTrafico}">Modificar</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div th:if="${traficos == null or traficos.empty}">
-                <h2>No se han agregado reportes de trafico</h2>
-            </div>
-        </div>
+        <section th:replace="trafico/fragmentosTrafico :: botonesAgregar"/>
+        <section th:replace="trafico/fragmentosTrafico :: agregarTrafico"/>
+        <section th:replace="trafico/fragmentosTrafico :: listadoTraficos"/>
+                
         <footer th:replace="layout/plantilla :: footer"/>
+
+
+
     </body>
 </html>

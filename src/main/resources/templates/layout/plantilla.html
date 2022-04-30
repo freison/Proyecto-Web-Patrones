@@ -23,22 +23,58 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <ul class="navbar-nav" sec:authorize="hasRole('ROLE_VENDEDOR')">
+                        <ul class="navbar-nav" sec:authorize="hasRole('ROLE_USER')">
                             <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link" th:href="@{/cliente/listado}"
-                                   th:text="#{plantilla.clientes}">Clientes</a>
+                                <a class="nav-menu-link nav-link" th:href="@{/sugerencia/listado}"
+                                   th:text="#{plantilla.sugerencias}"></a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link" th:href="@{/categoria/listado}"
-                                   th:text="#{plantilla.categorias}">Categorias</a>
+                                <a class="nav-menu-link nav-link" th:href="@{/rutina/listado}"
+                                   th:text="#{plantilla.rutinas}"></a>
                             </li>
-                            <li class="nav-item px-2">
+                            <li class="nav-item px-2" sec:authorize="hasRole('ROLE_USER')">
+                                <a class="nav-menu-link nav-link" th:href="@{/calentamiento/listado}"
+                                   th:text="#{plantilla.calentamientos}"></a>
+                            </li>
+                            <li class="nav-item px-2" sec:authorize="hasRole('ROLE_VENDEDOR')">
                                 <a class="nav-menu-link nav-link" th:href="@{/articulo/listado}"
-                                   th:text="#{plantilla.articulos}">Articulos</a>
+                                   th:text="#{plantilla.articulos}"></a>
                             </li>
-                            <li class="nav-item px-2"  sec:authorize="hasRole('ROLE_ADMIN')">
+                            <li class="nav-item px-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a class="nav-menu-link nav-link" th:href="@{/empresa/listado}"
+                                   th:text="#{plantilla.empresas}"></a>
+                            </li>
+                            <li class="nav-item px-2" sec:authorize="hasRole('ROLE_VENDEDOR')">
+                                <a class="nav-menu-link nav-link" th:href="@{/anuncio/listado}"
+                                   th:text="#{plantilla.anuncios}"></a>
+                            </li>
+                            <li class="nav-item px-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a class="nav-menu-link nav-link" th:href="@{/rol/listado}"
+                                   th:text="#{plantilla.roles}"></a>
+                            </li>
+                            <li class="nav-item px-2" sec:authorize="hasRole('ROLE_ADMIN')">
                                 <a class="nav-menu-link nav-link" th:href="@{/usuario/listado}"
-                                   th:text="#{plantilla.usuarios}">Usuarios</a>
+                                   th:text="#{plantilla.usuarios}"></a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/trafico/listado}"
+                                   th:text="#{plantilla.traficos}"></a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/meta/listado}"
+                                   th:text="#{plantilla.metas}"></a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/alerta/listado}"
+                                   th:text="#{plantilla.alertas}"></a>
+                            </li>
+                            <li class="nav-item px-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a class="nav-menu-link nav-link" th:href="@{/factura/listado}"
+                                   th:text="#{plantilla.facturas}"></a>
+                            </li>
+                            <li class="nav-item px-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a class="nav-menu-link nav-link" th:href="@{/detallefactura/listado}"
+                                   th:text="#{plantilla.detallefacturas}"></a>
                             </li>
                         </ul>
                         <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
