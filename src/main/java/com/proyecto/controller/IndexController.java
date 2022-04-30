@@ -47,6 +47,6 @@ public class IndexController {
         model.addAttribute("articulos", articulos);
         model.addAttribute("cantidadProductos", cantidadProductos);
         
-        return "tienda";
+        return "/tienda";
     }
 }

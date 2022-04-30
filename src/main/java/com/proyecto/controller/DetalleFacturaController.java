@@ -2,6 +2,8 @@
 package com.proyecto.controller;
 
 import com.proyecto.domain.DetalleFactura;
+import com.proyecto.domain.Factura;
+import com.proyecto.service.CarritoService;
 import com.proyecto.service.DetalleFacturaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DetalleFacturaController {
     @Autowired
     private DetalleFacturaService detallefacturaService;
+    
+    @Autowired
+    private CarritoService carritoService;
     
     
     @GetMapping("/detallefactura/listado")
@@ -30,8 +35,14 @@ public class DetalleFacturaController {
     }
     
     @PostMapping("detallefactura/guardar")
-    public String guardarDetalleFactura(DetalleFactura detallefactura){
-        detallefacturaService.save(detallefactura);
+    public String guardarDetalleFactura(DetalleFactura detallefactura, Model model){
+        
+        for(var item: carritoService.getArticulos().entrySet()){
+            detallefactura = new DetalleFactura();
+            detallefactura.setFactura((Factura)model.getAttribute("factura"));
+            detallefactura.setArticulo(item.getKey());
+            detallefacturaService.save(detallefactura);
+        }
         return "redirect:/detallefactura/listado";
     }
     

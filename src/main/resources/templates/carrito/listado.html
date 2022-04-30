@@ -40,9 +40,17 @@
                             </tr>
                         </tbody>
                     </table>
-                    
+
                     <section class="card">
                         <span th:text="${carritoTotal}"></span>
+                        <form th:action="@{/factura/guardar}"
+                              method="post"
+                              th:object="${factura}">
+                            <input type="hidden" th:value="${carritoTotal}" th:attr="name='total'"/>
+                            <br/>
+
+                            <input class="btn-primary" type="submit" name="facturar" value="Facturar"/>
+                        </form>
                     </section>
                 </div>                
             </div>

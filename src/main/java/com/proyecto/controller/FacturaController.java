@@ -1,10 +1,14 @@
 
 package com.proyecto.controller;
 
+import com.proyecto.domain.DetalleFactura;
 import com.proyecto.domain.Factura;
 import com.proyecto.domain.Usuario;
+import com.proyecto.service.CarritoService;
+import com.proyecto.service.DetalleFacturaService;
 import com.proyecto.service.FacturaService;
 import com.proyecto.service.UsuarioService;
+import java.time.LocalDate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +25,12 @@ public class FacturaController {
     @Autowired
     private UsuarioService usuarioService;
     
+    @Autowired
+    private CarritoService carritoService;
+    
+    @Autowired
+    private DetalleFacturaService detalleFacturaService;
+    
     @GetMapping("/factura/listado")
     public String inicio(Model model){
         var facturas = facturaService.getFacturas();
@@ -34,16 +44,26 @@ public class FacturaController {
     }
     
     @PostMapping("factura/guardar")
-    public String guardarFactura(Factura factura){
+    public String guardarFactura(Factura factura, Model model){
         Usuario usuario = new Usuario();
         Long idUsuario = (long)1;
         usuario.setIdUsuario(idUsuario);
         
         usuario = usuarioService.getUsuario(usuario);
         factura.setUsuario(usuario);
+        factura.setEstado(0);
+        factura.setFecha(LocalDate.now().toString());
         facturaService.save(factura);
+        
+        
+        for(var item: carritoService.getArticulos().entrySet()){
+            DetalleFactura detalleFactura = new DetalleFactura();
+            detalleFactura.setFactura((Factura)model.getAttribute("factura"));
+            detalleFactura.setArticulo(item.getKey());
+            detalleFacturaService.save(detalleFactura);
+        }
 
-        return "redirect:/factura/listado";
+        return "redirect:/";
     }
     
     @GetMapping("/factura/modificar/{idFactura}")
