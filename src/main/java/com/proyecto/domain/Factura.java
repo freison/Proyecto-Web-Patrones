@@ -29,7 +29,7 @@ public class Factura implements Serializable {
     @ManyToOne
     private Usuario usuario;
     
-    private Date fecha;
+    private String fecha;
     private Double total;
     private int estado;
     
@@ -37,7 +37,7 @@ public class Factura implements Serializable {
         
     }
 
-    public Factura(long idFactura, Usuario usuario, Date fecha, Double total, int estado) {
+    public Factura(long idFactura, Usuario usuario, String fecha, Double total, int estado) {
         this.idFactura = idFactura;
         this.usuario = usuario;
         this.fecha = fecha;
