@@ -2,6 +2,7 @@
 package com.proyecto.controller;
 
 import com.proyecto.domain.Articulo;
+import com.proyecto.domain.Factura;
 import com.proyecto.service.ArticuloService;
 import com.proyecto.service.CarritoService;
 import java.util.Hashtable;
@@ -46,6 +47,7 @@ public class CarritoController {
         model.addAttribute("totalArticulos", articulos.size());
         model.addAttribute("articulos", articulos);
         model.addAttribute("totalCantidad", totalCantidad);
+        model.addAttribute("factura", new Factura());
         
         return "/carrito/listado";
     }
