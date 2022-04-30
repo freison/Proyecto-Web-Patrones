@@ -38,8 +38,12 @@ public class Rutina implements Serializable {
         
     }
 
-    public Rutina(String descripcion, Usuario usuario) {
+    public Rutina(Long idRutina, String descripcion, Usuario usuario, Calentamiento calentamiento) {
+        this.idRutina = idRutina;
         this.descripcion = descripcion;
         this.usuario = usuario;
+        this.calentamiento = calentamiento;
     }
+
+    
 }

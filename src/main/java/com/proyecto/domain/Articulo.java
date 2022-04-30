@@ -24,6 +24,10 @@ public class Articulo implements Serializable {
     @Column(name="id_articulo")
     private long idArticulo;
     
+    @JoinColumn(name="id_categoria", referencedColumnName="id_categoria")
+    @ManyToOne
+    private Categoria categoria;
+    
     private String descripcion;
     private Double precio;
     private int activo;
@@ -33,8 +37,9 @@ public class Articulo implements Serializable {
         
     }
 
-    public Articulo(long idArticulo, String descripcion, Double precio, int activo, int existencia) {
+    public Articulo(long idArticulo, Categoria categoria, String descripcion, Double precio, int activo, int existencia) {
         this.idArticulo = idArticulo;
+        this.categoria = categoria;
         this.descripcion = descripcion;
         this.precio = precio;
         this.activo = activo;

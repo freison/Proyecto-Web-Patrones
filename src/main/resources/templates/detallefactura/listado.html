@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Detalle de Facturas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="contenido">
+            <header th:replace="layout/plantilla :: header" />
+            <h1>Detalle de Facturas</h1>
+            <a th:href="@{/detallefactura/nuevo}">Nuevo detalle</a>
+
+            <div th:if="${facturas != null and !facturas.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Articulo</th>
+                            <th>Factura</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="detallefactura : ${detallefacturas}">
+                            <td th:text="${detallefactura.idArticulo}"></td>
+                            <td th:text="${detallefactura.idFactura}"></td>
+                            <td><a th:href="@{/detallefactura/eliminar/} + ${detallefactura.idDetalleFactura}">Eliminar</a></td>
+                            <td><a th:href="@{/detallefactura/modificar/} + ${detallefactura.idDetalleFactura}">Modificar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:if="${facturas == null or facturas.empty}">
+                <h2>No se han agregado detalles de facturas</h2>
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

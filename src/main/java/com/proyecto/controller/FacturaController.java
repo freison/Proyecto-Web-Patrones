@@ -3,6 +3,7 @@ package com.proyecto.controller;
 
 import com.proyecto.domain.Factura;
 import com.proyecto.domain.Usuario;
+import com.proyecto.service.DetalleFacturaService;
 import com.proyecto.service.FacturaService;
 import com.proyecto.service.UsuarioService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,9 +39,11 @@ public class FacturaController {
         Usuario usuario = new Usuario();
         Long idUsuario = (long)1;
         usuario.setIdUsuario(idUsuario);
+        
         usuario = usuarioService.getUsuario(usuario);
         factura.setUsuario(usuario);
         facturaService.save(factura);
+
         return "redirect:/factura/listado";
     }
     

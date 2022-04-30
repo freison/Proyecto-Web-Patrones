@@ -18,6 +18,7 @@
                     <thead>
                         <tr>
                             <th>Descripcion</th>
+                            <th>Calentamiento</th>
                             <th>Eliminar</th>
                             <th>Modificar</th>
                         </tr>
@@ -25,6 +26,7 @@
                     <tbody>
                         <tr th:each="rutina : ${rutinas}">
                             <td th:text="${rutina.descripcion}"></td>
+                            <td th:text="${rutina.calentamiento.descripcion}"></td>
                             <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/rutina/eliminar/} + ${rutina.idRutina}">Eliminar</a></td>
                             <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/rutina/modificar/} + ${rutina.idRutina}">Modificar</a></td>
                         </tr>

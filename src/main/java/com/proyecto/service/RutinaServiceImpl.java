@@ -1,8 +1,10 @@
 
 package com.proyecto.service;
 
+import com.proyecto.dao.CalentamientoDao;
 import com.proyecto.dao.RutinaDao;
 import com.proyecto.dao.UsuarioDao;
+import com.proyecto.domain.Calentamiento;
 import com.proyecto.domain.Rutina;
 import com.proyecto.domain.Usuario;
 import java.util.List;
@@ -18,6 +20,9 @@ public class RutinaServiceImpl implements RutinaService {
     @Autowired
     private UsuarioDao usuarioDao; 
     
+    @Autowired
+    private CalentamientoDao calentamientoDao; 
+    
     @Override
     public List<Rutina> getRutinas() {
         return (List<Rutina>) rutinaDao.findAll();
@@ -28,6 +33,10 @@ public class RutinaServiceImpl implements RutinaService {
         Usuario usuario = rutina.getUsuario();
         usuario = usuarioDao.save(usuario);
         rutina.setUsuario(usuario);
+        
+        Calentamiento calentamiento = rutina.getCalentamiento();
+        calentamiento = calentamientoDao.save(calentamiento);
+        rutina.setCalentamiento(calentamiento);
         
         rutinaDao.save(rutina);
     }

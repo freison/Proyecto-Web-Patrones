@@ -44,8 +44,5 @@ public class Factura implements Serializable {
         this.total = total;
         this.estado = estado;
     }
-
-    
-
     
 }

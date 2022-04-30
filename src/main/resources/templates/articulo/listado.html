@@ -18,6 +18,7 @@
                         <tr>
                             <th>Descripcion</th>
                             <th>Precio</th>
+                            <th>Categoria</th>
                             <th>Activo</th>
                             <th>Existencia</th>
                             <th>Eliminar</th>
@@ -28,6 +29,7 @@
                         <tr th:each="articulo : ${articulos}">
                             <td th:text="${articulo.descripcion}"></td>
                             <td th:text="${articulo.precio}"></td>
+                            <td th:text="${articulo.categoria.descripcion}"></td>
                             <td th:text="${articulo.activo}"></td>
                             <td th:text="${articulo.existencia}"></td>
                             <td><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">Eliminar</a></td>
